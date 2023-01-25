@@ -3,15 +3,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  height: 6rem;
-  padding-top: 2rem;
 }
 
 .films {
   font-family: "Cookie", cursive;
   font-size: 3rem;
   color: var(--alternative-color);
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .search {

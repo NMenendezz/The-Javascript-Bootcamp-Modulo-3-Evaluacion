@@ -42,6 +42,7 @@ const template = document.querySelector(".template");
 const main = document.querySelector(".main");
 
 // Selectores del template
+const board = template.content.querySelector(".board");
 const wrapper = template.content.querySelector(".wrapper");
 const link = template.content.querySelector(".wrapper__link");
 const title = template.content.querySelector(".wrapper__title");
@@ -50,4 +51,12 @@ const overview = template.content.querySelector(".wrapper__overview");
 const btnFavourite = template.content.querySelector(".wrapper__favourite");
 const btnPending = template.content.querySelector(".wrapper__pending");
 
-
+// Prueba
+function display() {
+title.textContent = "Hola"
+const clone = template.cloneNode(true);
+fragment.append(clone.content);
+board.append(fragment);
+main.append(board)
+}
+display();
