@@ -1,3 +1,9 @@
+:root {
+  --primary-color: #000;
+  --secondary-color: #9e9ea7;
+  --alternative-color: #fff;
+}
+
 * {
   margin: 0;
   box-sizing: border-box;
@@ -7,4 +13,11 @@ body {
   min-width: 100vw;
   max-width: 100vw;
   height: 100vh;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    180deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(93, 93, 148, 1) 40%,
+    rgba(205, 236, 242, 1) 90%
+  );
 }
