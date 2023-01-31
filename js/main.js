@@ -39,10 +39,9 @@ catch (error) {
 
 const fragment = document.createDocumentFragment();
 const template = document.querySelector(".template");
-const main = document.querySelector(".main");
+const main = document.querySelector(".main__board");
 
 // Selectores del template
-const board = template.content.querySelector(".board");
 const wrapper = template.content.querySelector(".wrapper");
 const link = template.content.querySelector(".wrapper__link");
 const title = template.content.querySelector(".wrapper__title");
@@ -52,11 +51,47 @@ const btnFavourite = template.content.querySelector(".wrapper__favourite");
 const btnPending = template.content.querySelector(".wrapper__pending");
 
 // Prueba
-function display() {
-title.textContent = "Hola"
-const clone = template.cloneNode(true);
-fragment.append(clone.content);
-board.append(fragment);
-main.append(board)
+/* function display() {
+  title.textContent = "Hola Mundo!";
+  const clone = template.cloneNode(true);
+  fragment.append(clone.content);
+  main.append(fragment);
 }
-display();
+display(); */
+
+const url =
+  "https://api.themoviedb.org/3/movie/now_playing?api_key=465fe2cae55cadd50f352d27a0278c27&language=es-ES&page=1";
+
+async function getData(url) {
+  return new Promise((resolve, reject) => {
+    if (new URL(url)) {
+      resolve(fetch(url));
+    } else {
+      reject(new Error("Error al intentar acceder a la página"));
+    }
+  });
+}
+
+async function run() {
+  try {
+    const result = await getData(url);
+    const json = await result.json();
+    const results = json.results;
+    console.log(results);
+    for (const result of results) {
+      img.src = `https://www.themoviedb.org/t/p/w440_and_h660_face${result.poster_path}`;
+      title.textContent = result.title;
+      
+      const palabras = result.overview.split(" ");
+      overview.textContent = palabras.slice(0, 19).join(" ") + "...";
+      const clone = template.cloneNode(true);
+      fragment.append(clone.content);
+      main.append(fragment);
+      console.log(result.title);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+run();

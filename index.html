@@ -10,7 +10,6 @@
     <title>Tus películas 🎥</title>
   </head>
   <body>
-
     <!-- HEADER -->
     <header class="header">
       <h1 class="films">Películas</h1>
@@ -37,7 +36,7 @@
 
     <!-- MAIN -->
     <main class="main">
-      <section class="board"></section>
+      <section class="main__board"></section>
     </main>
 
     <!-- FOOTER -->
@@ -46,19 +45,18 @@
     </footer>
 
     <!-- TEMPLATE -->
-    <template>
+    <template class="template">
       <div class="wrapper">
-        <a class="link" src="" alt="Ver detalles">
-          <h3 class="title"></h3>
-          <img class="img" loading="lazy" src="" alt="" />
-          <p class="overview"></p>
-          <button class="favourite">
-            <span class="favourite__icon"></span>
-          </button>
-          <button class="pending">
-            <span class="pending__icon"></span>
-          </button>
-        </a>
+        <img class="wrapper__img" loading="lazy" src="" alt="" />
+        <h3 class="wrapper__title"></h3>
+        <p class="wrapper__overview"></p>
+        <a class="wrapper__link" href="#" alt="Ver detalles">Ver detalles</a>
+        <button class="wrapper__favourite">
+          <span class="wrapper__favourite-icon"></span>
+        </button>
+        <button class="wrapper__pending">
+          <span class="wrapper__pending-icon"></span>
+        </button>
       </div>
     </template>
   </body>
