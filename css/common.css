@@ -2,6 +2,9 @@
   --primary-color: #000;
   --secondary-color: #9e9ea7;
   --alternative-color: #fff;
+  --nav-bg: rgb(2, 0, 36);
+  --btn-bg: rgba(93, 93, 148, 1);
+  --btn-hover: rgba(205, 236, 242, 1);
 }
 
 * {

@@ -7,39 +7,13 @@
 
 */
 
-/* const url = new URL ('https://api.themoviedb.org/3/movie/now_playing?api_key=465fe2cae55cadd50f352d27a0278c27&language=es-ES');
-
-async function getData(url) {
-  return new Promise((resolve, reject) => {
-    if(url.protocol){
-      resolve(fetch(url))
-    } else {
-      reject(new Error('Error al intentar acceder a la página'))
-    }
-  })
-}
-
-async function run() {
-try {
-  const result = await getData(url)
-  const json = await result.json();
-
-  console.log(json)
-
-}
-
-catch (error) {
-  console.log(error)
-}
-} */
-
-// run();
-
 /***************** Selectores *****************/
 
 const fragment = document.createDocumentFragment();
 const template = document.querySelector(".template");
 const main = document.querySelector(".main__board");
+const previousBtn = document.querySelector(".main__nav-previous");
+const nextBtn = document.querySelector(".main__nav-next");
 
 // Selectores del template
 const wrapper = template.content.querySelector(".wrapper");
@@ -50,17 +24,25 @@ const overview = template.content.querySelector(".wrapper__overview");
 const btnFavourite = template.content.querySelector(".wrapper__favourite");
 const btnPending = template.content.querySelector(".wrapper__pending");
 
-// Prueba
-/* function display() {
-  title.textContent = "Hola Mundo!";
-  const clone = template.cloneNode(true);
-  fragment.append(clone.content);
-  main.append(fragment);
-}
-display(); */
+let page = 1;
+previousBtn.addEventListener("click", () => {
+  if (page > 1) {
+    page -= 1;
+    nowPlaying();
+  }
+});
 
-const url =
-  "https://api.themoviedb.org/3/movie/now_playing?api_key=465fe2cae55cadd50f352d27a0278c27&language=es-ES&page=1";
+nextBtn.addEventListener("click", () => {
+  if (page < 1000) {
+    page += 1;
+    nowPlaying();
+  }
+});
+const API_KEY = "api_key=465fe2cae55cadd50f352d27a0278c27";
+const api_url = new URL(
+  `https://api.themoviedb.org/3/movie/now_playing?${API_KEY}&language=es-ES`
+);
+const IMG_PATH = "https://image.tmdb.org/t/p/w500/";
 
 async function getData(url) {
   return new Promise((resolve, reject) => {
@@ -72,6 +54,38 @@ async function getData(url) {
   });
 }
 
+async function nowPlaying() {
+  try {
+    const resolve = await getData(`${api_url}&page=${page}`);
+    if (resolve.status === 200) {
+      const data = await resolve.json();
+      console.log(data);
+      main.innerHTML = "";
+      data.results.forEach((movie) => {
+        title.textContent = movie.title;
+        img.src = `${IMG_PATH}${movie.poster_path}`;
+        const palabras = movie.overview.split(" ");
+        if(palabras.length !== 1) {
+          overview.textContent = palabras.slice(0, 19).join(" ") + " ...";
+        } else {
+          overview.textContent = "No disponible"
+        }
+        const clone = template.cloneNode(true);
+        fragment.append(clone.content);
+      });
+      main.append(fragment);
+    } else if (resolve.status === 401) {
+      console.log("API key no válida: debes introducir una clave válida");
+    } else if (resolve.status === 404) {
+      console.log("No se encontró la página");
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+nowPlaying();
+/*
 async function run() {
   try {
     const result = await getData(url);
@@ -96,4 +110,4 @@ async function run() {
 
 
 run();
-
+ */

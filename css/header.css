@@ -50,7 +50,23 @@
 
 /* MEDIA QUERYS */
 
-@media screen and (min-width: 640px) {
+@media screen and (min-width: 510px) {
+  .films {
+    font-size: 4rem;
+  }
+  
+  .films span {
+    font-size: 3rem;
+  }
+
+  .search__input {
+    width: 14rem;
+    padding: .3rem;
+    padding-left: 2.4rem;
+  }
+}
+
+@media screen and (min-width: 660px) {
   .header {
     flex-direction: row;
     justify-content: space-between;
