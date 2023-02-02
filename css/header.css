@@ -11,6 +11,10 @@
   color: var(--alternative-color);
   padding: 1rem;
 }
+.films span {
+  font-size: 1.5rem;
+  margin-left: 1rem;
+}
 
 .search {
   position: relative;
@@ -50,20 +54,21 @@
   .header {
     flex-direction: row;
     justify-content: space-between;
+    padding: 0 2rem;
   }
 
   .films {
     font-size: 5rem;
   }
 
-  .search {
-    padding-right: 2rem;
+  .films span {
+    font-size: 3rem;
   }
 
   .search__input {
     width: 18rem;
     padding: .5rem;
-    padding-left: 2.2rem;
+    padding-left: 3rem;
   }
 
   .search__input::placeholder {
