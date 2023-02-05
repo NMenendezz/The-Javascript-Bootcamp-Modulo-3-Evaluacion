@@ -10,7 +10,9 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./css/styles.css" />
-    <script defer src="./js/main.js"></script>
+    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/search.js"></script>
+    <!-- <script type="module" src="./js/nowPlaying.js"></script> -->
     <title>Tus películas 🎥</title>
   </head>
   <body>
@@ -40,6 +42,7 @@
 
     <!-- MAIN -->
     <main class="main">
+      <section class="main__error"></section>
       <section class="main__board"></section>
       <nav class="main__nav">
         <button class="main__nav-previous">Anterior</button>
