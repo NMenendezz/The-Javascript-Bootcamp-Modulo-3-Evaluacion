@@ -26,7 +26,27 @@ const overview = template.content.querySelector(".wrapper__overview");
 const btnFavourite = template.content.querySelector(".wrapper__favourite");
 const btnPending = template.content.querySelector(".wrapper__pending"); */
 
+const title = document.querySelector(".films");
+
 import { nowPlaying } from "./nowPlaying.js";
 
 nowPlaying();
 
+title.addEventListener('click', () => {
+  window.location.href = "/";
+})
+
+// Botón para volver arriba
+const btn = document.querySelector(".main__up");
+btn.addEventListener("click", function() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+});
+
+window.onscroll = function() {
+  if (document.body.scrollTop > 25 || document.documentElement.scrollTop > 400) {
+    btn.style.display = "block";
+  } else {
+    btn.style.display = "none";
+  }
+};

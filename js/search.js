@@ -6,7 +6,8 @@ const template = document.querySelector(".template");
 const main = document.querySelector(".main__board");
 const errorSection = document.querySelector(".main__error");
 const search = document.querySelector(".search__input");
-const mainNav = document.querySelector(".main__nav");
+const mainNav = document.querySelector(".main__nav")
+const upBtn = document.querySelector(".main__up");;
 const footer = document.querySelector(".footer")
 
 // Selectores del template
@@ -37,6 +38,7 @@ search.addEventListener("keydown", (event) => {
     mainNav.style.display = 'none'
     footer.style.height = '4rem'
     footer.style.alignItems = "center"
+    upBtn.style.bottom = '0'
   }
 });
 

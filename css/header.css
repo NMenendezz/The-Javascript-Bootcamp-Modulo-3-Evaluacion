@@ -29,6 +29,7 @@
   padding: .2rem;
   padding-left: 2.2rem;
   border-radius: 3px;
+  font-size: .8rem;
 }
 
 .search__input::placeholder {
@@ -63,6 +64,7 @@
     width: 14rem;
     padding: .3rem;
     padding-left: 2.4rem;
+    font-size: 1rem;
   }
 }
 
