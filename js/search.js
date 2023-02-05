@@ -7,8 +7,6 @@ const main = document.querySelector(".main__board");
 const errorSection = document.querySelector(".main__error");
 const search = document.querySelector(".search__input");
 const mainNav = document.querySelector(".main__nav");
-const previousBtn = document.querySelector(".main__nav-previous");
-const nextBtn = document.querySelector(".main__nav-next");
 const footer = document.querySelector(".footer")
 
 // Selectores del template

@@ -3,7 +3,6 @@
 const fragment = document.createDocumentFragment();
 const template = document.querySelector(".template");
 const main = document.querySelector(".main__board");
-const errorSection = document.querySelector(".main__error");
 const previousBtn = document.querySelector(".main__nav-previous");
 const nextBtn = document.querySelector(".main__nav-next");
 
@@ -21,7 +20,7 @@ const apiUrl = new URL(
   `https://api.themoviedb.org/3/movie/now_playing?${API_KEY}&language=es-ES`
 );
 export const IMG_PATH = "https://image.tmdb.org/t/p/w500/";
-export let totalPages;
+let totalPages;
 
 // Función de llamada a la API
 export async function getData(url) {
@@ -35,10 +34,11 @@ export async function getData(url) {
 }
 
 // Obtener respuesta de la llamada a la API
-export async function getResponse(resolve) {
+async function getResponse(resolve) {
   if (resolve.status === 200) {
     const data = await resolve.json();
     console.log(data);
+    totalPages = data.total_pages;
     data.results.forEach((movie) => {
       title.textContent = movie.title;
       img.src = `${IMG_PATH}${movie.poster_path}`;
@@ -72,7 +72,6 @@ export async function nowPlaying() {
     console.log(error);
   }
 }
-
 
 // Página anterior
 let page = 1;

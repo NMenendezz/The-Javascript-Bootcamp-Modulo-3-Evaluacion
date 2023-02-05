@@ -29,3 +29,4 @@ const btnPending = template.content.querySelector(".wrapper__pending"); */
 import { nowPlaying } from "./nowPlaying.js";
 
 nowPlaying();
+
